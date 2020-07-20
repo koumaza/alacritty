@@ -1,7 +1,6 @@
 //! TTY related functionality.
 
 use std::borrow::Cow;
-use std::env;
 use std::ffi::CStr;
 use std::fs::File;
 use std::io;
@@ -140,7 +139,7 @@ fn default_shell(pw: &Passwd<'_>) -> Program {
 
 #[cfg(not(target_os = "macos"))]
 fn default_shell(pw: &Passwd<'_>) -> Program {
-    Program::Just(env::var("SHELL").unwrap_or_else(|_| pw.shell.to_owned()))
+    Program::Just(std::env::var("SHELL").unwrap_or_else(|_| pw.shell.to_owned()))
 }
 
 /// Create a new TTY and return a handle to interact with it.

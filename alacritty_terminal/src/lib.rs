@@ -12,9 +12,15 @@ pub mod index;
 pub mod selection;
 pub mod sync;
 pub mod term;
+pub mod text_run;
 pub mod thread;
 pub mod tty;
 pub mod vi_mode;
 
 pub use crate::grid::Grid;
 pub use crate::term::Term;
+
+mod gl {
+    #![allow(clippy::all)]
+    include!(concat!(env!("OUT_DIR"), "/gl_bindings.rs"));
+}
